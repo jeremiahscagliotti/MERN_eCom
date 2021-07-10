@@ -3,11 +3,14 @@
   "version": "1.0.0",
   "description": "mern shopping cart app",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node database/server",
     "server": "nodemon database/server",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev:import": "node database/seeder",
+    "dev:destroy": "node database/seeder -d"
   },
   "repository": {
     "type": "git",
@@ -21,7 +24,11 @@
   "homepage": "https://github.com/jeremiahscagliotti/MERN_eCom#readme",
   "dependencies": {
     "axios": "^0.21.1",
-    "express": "^4.17.1"
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "mongoose": "^5.13.2"
   },
   "devDependencies": {
     "concurrently": "^6.2.0",
