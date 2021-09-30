@@ -2,6 +2,7 @@ import express  from 'express';
 import dotenv from 'dotenv';
 import products from './data/products.js';
 import connectDB from './config/db.js';
+import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 import { productRouters } from './routers/allRouters.js'
 
@@ -14,6 +15,10 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/products', productRouters)
+
+app.use(notFound)
+
+app.use(errorHandler)
 
 app.get('/api/products', (req, res) => {
     res.json(products)
